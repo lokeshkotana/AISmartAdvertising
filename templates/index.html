@@ -1,0 +1,213 @@
+<!DOCTYPE html> 
+<html lang="en" >
+<head>
+
+  <title>Smart Advertising</title>
+
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+<style>
+  
+
+  div{
+    display: inline;
+  }
+
+  img{
+    padding: 5px;
+    display: inline;
+  }
+
+  .divimg{
+    display: inline;
+
+  }
+
+</style>
+<script type="text/javascript"
+  src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<script type="text/javascript">
+var intervalID = setInterval(update_values,1000);
+var m=0;
+var w =0;
+var res=[];
+  function update_values() {
+        $.getJSON($SCRIPT_ROOT + '/test',
+               
+      function(data) {data.result
+        $('#result').text(data.result);
+      //  console.log(data.result);
+        res = data.result;
+      });
+      
+
+      m=0,w=0;per = 0
+      for(let i=0; i<res.length; i++){        
+
+       if(res[i] == 'man'){
+         m=m+1;
+       } 
+
+       if(res[i] == 'woman'){
+        w=w+1;
+      }       
+      }    
+      per = m*100/(m+w)
+     
+
+
+    
+   if (per == 0){
+    document.getElementById('men0').style.display = 'block';
+    document.getElementById('men30').style.display = 'none';
+    document.getElementById('men50').style.display = 'none';
+    document.getElementById('men70').style.display = 'none';
+    document.getElementById('men100').style.display = 'none';
+    console.log(0);
+  }else if(per > 0 && per <40){      
+    document.getElementById('men0').style.display = 'none';
+    document.getElementById('men30').style.display = 'block';
+    document.getElementById('men50').style.display = 'none';
+    document.getElementById('men70').style.display = 'none';
+    document.getElementById('men100').style.display = 'none';  
+    console.log(30);
+  }else if(per >= 40 && per <=60){      
+    document.getElementById('men0').style.display = 'none';
+    document.getElementById('men30').style.display = 'none';
+    document.getElementById('men50').style.display = 'block';
+    document.getElementById('men70').style.display = 'none';
+    document.getElementById('men100').style.display = 'none';
+    console.log(50);        
+  }else if(per > 60 && per <100){      
+    document.getElementById('men0').style.display = 'none';
+    document.getElementById('men30').style.display = 'none';
+    document.getElementById('men50').style.display = 'none';
+    document.getElementById('men70').style.display = 'block';
+    document.getElementById('men100').style.display = 'none';  
+    console.log(70);
+  }else if(per == 100){      
+    document.getElementById('men0').style.display = 'none';
+    document.getElementById('men30').style.display = 'none';
+    document.getElementById('men50').style.display = 'none';
+    document.getElementById('men70').style.display = 'none';
+    document.getElementById('men100').style.display = 'block';   
+    console.log(100);
+  }
+      
+    };    
+    
+    function stopTextColor() {
+      clearInterval(intervalID);
+    }
+    
+    window.onload = function(){
+     
+    
+        
+  
+    
+  };
+
+
+</script>
+
+</head>
+
+<body>
+       <!-- <span onload="update_values();" id="result">?</span>   
+
+    <button onclick="stopTextColor();">Stop</button> -->
+
+    <!-- <img width="1000" src="{{ url_for('video_feed') }}"> -->
+<div id="men0"> 
+
+  <div class="divimg" ><img style="width: 18%;" src="https://www.sephora.com/productimages/sku/s2418838-main-zoom.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://www.sephora.com/contentimages/homepage/072021/Homepage/DesktopMweb/2021-07-28-hp-slide-just-arrived-cyoa-ca-m-slice.jpeg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://img.khoobsurati.com/wp-content/uploads/2016/04/10-Wise-Tips-to-Make-Your-Beauty-Products-Last-Longer.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://aalanddiamond.com/wp-content/uploads/2021/02/The-Best-Jewelry-to-Wear-in-the-Summer.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW7X_DLJuqfm7J2ilf2sQx8UrN-Sc22lsPaQ&usqp=CAU"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://i.pinimg.com/originals/8d/2a/c5/8d2ac568a489788560e0e672fab18b80.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://reviewed-production.s3.amazonaws.com/attachment/d1724d74c5214e18/revlon-brush_Cropped.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://media.theeverygirl.com/wp-content/uploads/2020/07/best-makeup-brands-for-black-women-the-everymom-f-h.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/newscms/2021_19/1717261/makeup-products-for-sensitive-skin-bd-2x1-bug-210514.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8mNO5Q4crfF5yKCUkCNQfT4pDNc17nBdGyA&usqp=CAU"  ></div>
+
+</div>
+<div id="men30"> 
+ 
+  <div class="divimg" ><img style="width: 18%;" src="https://www.justformen.com/media/catalog/product/cache/ede10bc9e9973a9ab601ee15943432f0/m/1/m10_small.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://www.dove.com/content/dam/unilever/dove/united_states_of_america/pack_shot/079400452528-2270110-png.png.ulenscale.220x220.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://sc01.alicdn.com/kf/HTB13nlruEOWBKNjSZKzq6xfWFXaE/Men-s-Skin-Care-Products.jpg_350x350.jpg"  ></div>
+
+  <div class="divimg" ><img style="width: 18%;" src="https://aalanddiamond.com/wp-content/uploads/2021/02/The-Best-Jewelry-to-Wear-in-the-Summer.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW7X_DLJuqfm7J2ilf2sQx8UrN-Sc22lsPaQ&usqp=CAU"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://i.pinimg.com/originals/8d/2a/c5/8d2ac568a489788560e0e672fab18b80.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://reviewed-production.s3.amazonaws.com/attachment/d1724d74c5214e18/revlon-brush_Cropped.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://media.theeverygirl.com/wp-content/uploads/2020/07/best-makeup-brands-for-black-women-the-everymom-f-h.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/newscms/2021_19/1717261/makeup-products-for-sensitive-skin-bd-2x1-bug-210514.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8mNO5Q4crfF5yKCUkCNQfT4pDNc17nBdGyA&usqp=CAU"  ></div>
+
+
+ 
+</div>
+<div id="men50"> 
+  
+  <div class="divimg" ><img style="width: 18%;" src="https://www.justformen.com/media/catalog/product/cache/ede10bc9e9973a9ab601ee15943432f0/m/1/m10_small.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://www.dove.com/content/dam/unilever/dove/united_states_of_america/pack_shot/079400452528-2270110-png.png.ulenscale.220x220.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://sc01.alicdn.com/kf/HTB13nlruEOWBKNjSZKzq6xfWFXaE/Men-s-Skin-Care-Products.jpg_350x350.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="http://sc04.alicdn.com/kf/HTB1CSSoSpXXXXXOapXX760XFXXXZ.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://img6.hkrtcdn.com/12087/prd_1208655-MuscleBlaze-Whey-Protein-4.4-lb-Rich-Milk-Chocolate_c_l.jpg"  ></div>
+  
+  <div class="divimg" ><img style="width: 18%;" src="https://i.pinimg.com/originals/8d/2a/c5/8d2ac568a489788560e0e672fab18b80.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://reviewed-production.s3.amazonaws.com/attachment/d1724d74c5214e18/revlon-brush_Cropped.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://media.theeverygirl.com/wp-content/uploads/2020/07/best-makeup-brands-for-black-women-the-everymom-f-h.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/newscms/2021_19/1717261/makeup-products-for-sensitive-skin-bd-2x1-bug-210514.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8mNO5Q4crfF5yKCUkCNQfT4pDNc17nBdGyA&usqp=CAU"  ></div>
+
+ 
+</div>
+<div id="men70"> 
+  
+  <div class="divimg" ><img style="width: 18%;" src="https://www.justformen.com/media/catalog/product/cache/ede10bc9e9973a9ab601ee15943432f0/m/1/m10_small.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://www.dove.com/content/dam/unilever/dove/united_states_of_america/pack_shot/079400452528-2270110-png.png.ulenscale.220x220.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://sc01.alicdn.com/kf/HTB13nlruEOWBKNjSZKzq6xfWFXaE/Men-s-Skin-Care-Products.jpg_350x350.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="http://sc04.alicdn.com/kf/HTB1CSSoSpXXXXXOapXX760XFXXXZ.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://img6.hkrtcdn.com/12087/prd_1208655-MuscleBlaze-Whey-Protein-4.4-lb-Rich-Milk-Chocolate_c_l.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://2inn3u3s3k9e1asyaw3g5gb6-wpengine.netdna-ssl.com/wp-content/uploads/2017/08/mens-skincare-brands-grooming-products-2017-grooming-tools-kits-for-men-2018.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://www.men-u.com/wp-content/uploads/2018/06/grid-1.jpg"  ></div>
+ 
+  <div class="divimg" ><img style="width: 18%;" src="https://media.theeverygirl.com/wp-content/uploads/2020/07/best-makeup-brands-for-black-women-the-everymom-f-h.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/newscms/2021_19/1717261/makeup-products-for-sensitive-skin-bd-2x1-bug-210514.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8mNO5Q4crfF5yKCUkCNQfT4pDNc17nBdGyA&usqp=CAU"  ></div>
+
+ 
+</div>
+<div id="men100"> 
+ 
+  <div class="divimg" ><img style="width: 18%;" src="https://www.justformen.com/media/catalog/product/cache/ede10bc9e9973a9ab601ee15943432f0/m/1/m10_small.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://www.dove.com/content/dam/unilever/dove/united_states_of_america/pack_shot/079400452528-2270110-png.png.ulenscale.220x220.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://sc01.alicdn.com/kf/HTB13nlruEOWBKNjSZKzq6xfWFXaE/Men-s-Skin-Care-Products.jpg_350x350.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="http://sc04.alicdn.com/kf/HTB1CSSoSpXXXXXOapXX760XFXXXZ.png"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://img6.hkrtcdn.com/12087/prd_1208655-MuscleBlaze-Whey-Protein-4.4-lb-Rich-Milk-Chocolate_c_l.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://2inn3u3s3k9e1asyaw3g5gb6-wpengine.netdna-ssl.com/wp-content/uploads/2017/08/mens-skincare-brands-grooming-products-2017-grooming-tools-kits-for-men-2018.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://www.men-u.com/wp-content/uploads/2018/06/grid-1.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://www.menshairstylestoday.com/wp-content/uploads/2019/12/Shea-Moisture-Beard-Kit.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://www.menshairstylestoday.com/wp-content/uploads/2018/11/Mens-Hair-Products-By-Hair-Type.jpg"  ></div>
+  <div class="divimg" ><img style="width: 18%;" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F14%2F2015%2F04%2F05%2F040315-don-draper-mad-men-3-480_0.jpg"  ></div>
+
+ 
+</div>
+
+
+    </body>
+</html>
