@@ -10,8 +10,8 @@ from flask import Flask, request, jsonify, render_template, Response
 
 app = Flask(__name__)
 model = load_model('gender_detection.model')
-webcam = cv2.VideoCapture("people2.mp4")    
-# webcam = cv2.VideoCapture(0)
+# webcam = cv2.VideoCapture("people2.mp4")    
+webcam = cv2.VideoCapture(0)
 classes = ['man','woman']
 
 
