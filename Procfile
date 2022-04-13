@@ -1,1 +1,1 @@
-web: gunicorn aismartadvertising:app
+web: gunicorn app:app
